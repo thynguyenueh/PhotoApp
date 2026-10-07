@@ -27,6 +27,11 @@
         android:name=".DetailActivity"
         android:exported="false"
         android:parentActivityName=".MainActivity" />
+    <activity
+        android:name=".SettingActivity"
+        android:exported="false"
+        android:label="Setting &amp; Profile"
+        android:parentActivityName=".MainActivity" />
 
   </application>
 

@@ -3,20 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="16dp">
 
-    <TextView
+    <Button
+        android:id="@+id/btnOpenSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="12dp"
-        android:text="LAB 8 - User List (Internet Data)"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:text="MỞ CÀI ĐẶT (LAB 9 - SHAREDPREFERENCES)" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUsers"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp" />
 
 </LinearLayout>

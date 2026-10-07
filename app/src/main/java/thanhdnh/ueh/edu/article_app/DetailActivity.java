@@ -1,6 +1,5 @@
 package thanhdnh.ueh.edu.article_app;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,43 +10,37 @@ import com.bumptech.glide.Glide;
 
 public class DetailActivity extends AppCompatActivity {
 
+    private ImageView ivAvatar;
+    private TextView tvUname, tvGender, tvAge, tvPassword, tvBio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        ImageView ivProfile = findViewById(R.id.ivDetailProfile);
-        TextView tvUname = findViewById(R.id.tvDetailUname);
-        TextView tvPassword = findViewById(R.id.tvDetailPassword);
-        TextView tvShortBio = findViewById(R.id.tvDetailShortBio);
+        ivAvatar = findViewById(R.id.ivDetailAvatar);
+        tvUname = findViewById(R.id.tvDetailUname);
+        tvGender = findViewById(R.id.tvDetailGender);
+        tvAge = findViewById(R.id.tvDetailAge);
+        tvPassword = findViewById(R.id.tvDetailPassword);
+        tvBio = findViewById(R.id.tvDetailBio);
 
-        User user;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            user = getIntent().getSerializableExtra("USER_DATA", User.class);
-        } else {
-            user = (User) getIntent().getSerializableExtra("USER_DATA");
-        }
+        // Nhận đối tượng User truyền từ Adapter/Activity
+        User user = (User) getIntent().getSerializableExtra("user_data");
 
         if (user != null) {
             tvUname.setText(user.getUname());
-            tvPassword.setText("Password: " + user.getPassword());
-            tvShortBio.setText(user.getShortBio());
+            tvGender.setText("Giới tính: " + user.getGender());
+            tvAge.setText("Tuổi: " + user.getAge());
+            tvPassword.setText("Mật khẩu: " + user.getPassword());
+            tvBio.setText(user.getShortBio());
 
+            // Nạp ảnh đại diện qua Glide
             Glide.with(this)
                     .load(user.getUrlProfile())
                     .placeholder(android.R.drawable.ic_menu_gallery)
-                    .into(ivProfile);
-
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setTitle("Chi tiết User");
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            }
+                    .error(android.R.drawable.ic_delete)
+                    .into(ivAvatar);
         }
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
     }
 }

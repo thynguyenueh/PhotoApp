@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CẤU HÌNH &amp; LỌC DỮ LIỆU"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="16dp" />
+
+        <!-- Công tắc bật/tắt Lọc -->
+        <Switch
+            android:id="@+id/swEnableFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bật Lọc Danh Sách User"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- 1. Giới tính (Radio Buttons) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. Lọc theo Giới tính:"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rgGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tất cả"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rbMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Nam" />
+
+            <RadioButton
+                android:id="@+id/rbFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Nữ" />
+        </RadioGroup>
+
+        <!-- 2. Tuổi tối thiểu -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. Tuổi tối thiểu (Lọc người >= tuổi này):"
+            android:layout_marginTop="12dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etMinAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Nhập tuổi (Ví dụ: 20)" />
+
+        <!-- 3. Dark Mode -->
+        <Switch
+            android:id="@+id/swDarkMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="3. Chế độ Tối (Dark Mode)" />
+
+        <!-- 4. Notifications -->
+        <Switch
+            android:id="@+id/swNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="4. Nhận Thông Báo" />
+
+        <Button
+            android:id="@+id/btnSaveSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="LƯU CÀI ĐẶT &amp; ÁP DỤNG LỌC" />
+
+    </LinearLayout>
+</ScrollView>
