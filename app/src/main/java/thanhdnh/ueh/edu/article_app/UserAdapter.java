@@ -37,18 +37,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         User user = userList.get(position);
 
         if (user != null) {
-            holder.tvUname.setText(user.getUname());
-            holder.tvShortBio.setText(user.getShortBio());
+            holder.tvUsername.setText(user.getUname());
+            holder.tvBio.setText(user.getShortBio());
 
             Glide.with(context)
                     .load(user.getUrlProfile())
                     .placeholder(android.R.drawable.ic_menu_gallery)
-                    .error(android.R.drawable.ic_dialog_alert)
-                    .into(holder.ivProfile);
+                    .error(android.R.drawable.ic_delete)
+                    .into(holder.ivAvatar);
 
             holder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("USER_DATA", user);
+                intent.putExtra("user_data", user);
                 context.startActivity(intent);
             });
         }
@@ -60,14 +60,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
     public static class UserViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivProfile;
-        TextView tvUname, tvShortBio;
+        ImageView ivAvatar;
+        TextView tvUsername, tvBio;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivProfile = itemView.findViewById(R.id.ivProfile);
-            tvUname = itemView.findViewById(R.id.tvUname);
-            tvShortBio = itemView.findViewById(R.id.tvShortBio);
+            ivAvatar = itemView.findViewById(R.id.ivAvatar);
+            tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvBio = itemView.findViewById(R.id.tvBio);
         }
     }
 }
