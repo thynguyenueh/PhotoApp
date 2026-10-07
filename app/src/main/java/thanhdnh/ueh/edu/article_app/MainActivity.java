@@ -1,34 +1,57 @@
 package thanhdnh.ueh.edu.article_app;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-  public GridView gridview;
-
-  private AdapterView.OnItemClickListener onitemclick = new AdapterView.OnItemClickListener() {
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-      Intent intent = new Intent(getBaseContext(), ViewArticleActivity.class);
-      intent.putExtra("id", gridview.getAdapter().getItemId(position));
-      startActivity(intent);
-    }
-  };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    getSupportActionBar().hide();
 
-    gridview = findViewById(R.id.gridview);
-    new ArticleData(getBaseContext(), gridview).loadData("https://raw.githubusercontent.com/thanhdnh/json/main/products.json", this);
-    gridview.setOnItemClickListener(onitemclick);
+    RecyclerView recyclerView = findViewById(R.id.recyclerViewUsers);
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    List<User> userList = initData();
+
+    UserAdapter adapter = new UserAdapter(this, userList);
+    recyclerView.setAdapter(adapter);
   }
 
+  private List<User> initData() {
+    List<User> userList = new ArrayList<>();
+
+    userList.add(new User(
+            1,
+            "nguyen_bao_thy",
+            "pass123",
+            "https://i.pravatar.cc/300?img=5",
+            "Business Analyst Intern | ERP & Database System Designer."
+    ));
+
+    userList.add(new User(
+            2,
+            "tuan_linh_dev",
+            "pass456",
+            "https://i.pravatar.cc/300?img=12",
+            "Android Developer passionate about mobile technologies."
+    ));
+
+    userList.add(new User(
+            3,
+            "ueh_student",
+            "pass789",
+            "https://i.pravatar.cc/300?img=3",
+            "UEH University Student | E-Commerce & Tech Researcher."
+    ));
+
+    return userList;
+  }
 }
